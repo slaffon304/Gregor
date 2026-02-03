@@ -1,0 +1,297 @@
+/* Подключение шрифтов (похожие на оригинал) */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap');
+
+:root {
+    --gold: #c59d5f;
+    --gold-dark: #8a6d3b;
+    --gold-gradient: linear-gradient(45deg, #c59d5f, #eebf75);
+    --text-dark: #333;
+    --bg-light: #f9f9f9;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #fff;
+    color: var(--text-dark);
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    text-transform: uppercase;
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+/* --- HEADER --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.logo img { height: 40px; } /* Замените на лого */
+
+nav ul {
+    display: flex;
+    gap: 40px;
+}
+
+nav a {
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+
+nav a:hover { color: var(--gold); }
+
+/* --- HERO SECTION --- */
+.hero {
+    display: flex;
+    padding: 50px;
+    align-items: center;
+    min-height: 80vh;
+    background: url('path-to-geometric-bg.png') no-repeat right top; /* Сюда паттерн */
+    background-size: contain;
+}
+
+.hero-text {
+    flex: 1;
+    padding-right: 50px;
+}
+
+.hero-text h1 {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-text p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    max-width: 600px;
+}
+
+.buttons { display: flex; gap: 20px; }
+
+.btn {
+    padding: 12px 30px;
+    background: var(--gold-gradient);
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: transform 0.2s;
+}
+
+.btn:hover { transform: scale(1.05); }
+
+.hero-img {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.hero-img img {
+    max-width: 100%;
+    height: auto;
+    max-height: 600px;
+    z-index: 2;
+}
+
+/* Эффект золотой рамки сзади */
+.hero-img::before {
+    content: '';
+    position: absolute;
+    width: 80%;
+    height: 90%;
+    border: 2px solid var(--gold);
+    top: -20px;
+    right: 20px;
+    z-index: 1;
+}
+
+/* --- SECTIONS GENERAL --- */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 50px 20px;
+    border-top: 1px solid #eee;
+}
+
+.section-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--gold);
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    padding: 20px 50px 60px;
+}
+
+/* --- PRODUCTS --- */
+.product-card {
+    text-align: center;
+    background: #fdfdfd;
+    padding: 20px;
+    border: 1px solid #eee;
+}
+
+.product-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.product-card h4 { font-size: 0.9rem; color: #555; }
+
+/* --- BANNERS --- */
+.full-banner {
+    width: 100%;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.full-banner img.bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.banner-content {
+    position: relative;
+    z-index: 1;
+    width: 50%;
+    padding-left: 50px; /* Для первого баннера */
+    margin-left: auto; /* Сдвигает контент вправо */
+    text-align: center;
+}
+
+.banner-content h2 { font-size: 2.5rem; margin-bottom: 10px; }
+.banner-content p { letter-spacing: 2px; margin-bottom: 20px; font-weight: bold;}
+
+/* Специфика для Oil Banner (темный) */
+.oil-banner .banner-content {
+    margin-left: 50px; /* Слева */
+    text-align: left;
+    color: white;
+    width: 40%;
+}
+.oil-banner h2 { color: var(--gold); }
+.oil-banner p { color: white; }
+
+/* --- NEWS --- */
+.news-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+.news-label {
+    background: #222;
+    color: white;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    display: inline-block;
+    margin-top: -30px;
+    position: relative;
+    z-index: 2;
+    margin-left: 10px;
+    text-transform: uppercase;
+}
+
+/* --- FOOTER --- */
+footer {
+    text-align: center;
+    padding: 50px;
+    background: white;
+    position: relative;
+}
+.footer-logo { font-family: 'Cinzel'; font-size: 1.5rem; color: var(--gold); margin-bottom: 10px; display: block;}
+.copyright { font-size: 0.8rem; color: #888; }
+.decor-splash {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 150px;
+    pointer-events: none;
+}
+
+/* --- TEAM PAGE SPECIFIC --- */
+.team-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 50px;
+    flex-wrap: wrap;
+}
+
+.team-card {
+    width: 300px;
+    text-align: center;
+}
+
+.photo-frame {
+    position: relative;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid var(--gold); /* Золотая рамка */
+}
+
+/* Узор сзади */
+.photo-frame::before {
+    content: '';
+    position: absolute;
+    top: 10px; left: 10px; right: 10px; bottom: 10px;
+    background: repeating-linear-gradient(45deg, #fff, #fff 2px, #f4e9d6 2px, #f4e9d6 4px);
+    z-index: 0;
+}
+
+.photo-frame img {
+    position: relative;
+    width: 100%;
+    z-index: 1;
+    display: block;
+    margin-top: -30px; /* Эффект выхода за рамку сверху */
+}
+
+.team-info h3 { font-size: 1rem; margin-bottom: 5px; color: var(--gold-dark); letter-spacing: 1px;}
+.team-info p { font-size: 0.8rem; font-weight: bold; color: #333; letter-spacing: 1px;}
+.team-title { text-align: center; font-size: 3rem; margin-top: 20px;}
+
+/* Декор брызги для Team */
+.splash-top-left { position: fixed; top: 0; left: 0; width: 150px; z-index: -1; }
+.splash-top-right { position: fixed; top: 0; right: 0; width: 200px; z-index: -1; }
