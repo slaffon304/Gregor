@@ -1,4 +1,4 @@
-/* Подключение шрифтов */
+/* --- ШРИФТЫ --- */
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap');
 
 :root {
@@ -15,20 +15,21 @@
     box-sizing: border-box;
 }
 
-/* === ИСПРАВЛЕНИЕ: ГЕНЕРАЦИЯ ФОНА КОДОМ === */
+/* --- ОСНОВНОЙ ФОН (ИСПРАВЛЕНО) --- */
 body {
     font-family: 'Montserrat', sans-serif;
     color: var(--text-dark);
     overflow-x: hidden;
+    background-color: #ffffff;
     
-    /* Фон чуть темнее белого, чтобы выделить золото */
-    background-color: #fafafa; 
-    
-    /* Узор: более толстые линии и более яркий цвет (0.4 вместо 0.1) */
-    background-image: 
-        repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(197, 157, 95, 0.4) 40px, rgba(197, 157, 95, 0.4) 42px),
-        repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(197, 157, 95, 0.4) 40px, rgba(197, 157, 95, 0.4) 42px);
+    /* 
+       Сложный геометрический узор (кубы/гексагоны) через SVG. 
+       Это выглядит намного дороже, чем простая сетка.
+    */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='%23c59d5f' fill-opacity='0.25' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background-size: 40px auto; /* Размер узора */
 }
+
 h1, h2, h3, h4 {
     font-family: 'Cinzel', serif;
     color: var(--gold);
@@ -38,54 +39,64 @@ h1, h2, h3, h4 {
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 
-/* --- HEADER --- */
+/* --- HEADER (ИСПРАВЛЕНО) --- */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 50px;
-    background: #fff;
+    padding: 15px 5% 15px 5%; /* Адаптивные отступы */
+    background: #ffffff; /* Белый фон, чтобы перекрыть узор */
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border-bottom: 1px solid rgba(197, 157, 95, 0.2); /* Тонкая золотая линия снизу */
 }
 
-.logo img { height: 40px; }
+.logo img { height: 40px; display: block; }
 
 nav ul {
     display: flex;
-    gap: 40px;
+    gap: 20px;
+}
+
+/* Скрываем меню на очень маленьких экранах или делаем меньше шрифт */
+@media (max-width: 768px) {
+    nav ul { gap: 10px; }
+    nav a { font-size: 10px; }
+    header { padding: 10px 20px; }
 }
 
 nav a {
-    font-size: 14px;
+    font-size: 13px;
     letter-spacing: 1px;
     font-weight: 600;
     text-transform: uppercase;
     transition: color 0.3s;
 }
-
 nav a:hover { color: var(--gold); }
 
 /* --- HERO SECTION --- */
 .hero {
     display: flex;
-    padding: 50px;
+    flex-wrap: wrap; /* Чтобы на мобильном элементы падали друг под друга */
+    padding: 50px 5%;
     align-items: center;
     min-height: 80vh;
-    /* ИСПРАВЛЕНО: Убрана ссылка на отсутствующую картинку, чтобы был виден общий фон */
     position: relative;
+    /* На белом фоне узор читается лучше, можно добавить градиент поверх, чтобы узор затухал слева */
+    background: linear-gradient(90deg, #ffffff 30%, rgba(255,255,255,0.6) 100%);
 }
 
 .hero-text {
     flex: 1;
+    min-width: 300px; /* Чтобы текст не сжимался слишком сильно */
     padding-right: 50px;
+    z-index: 2;
 }
 
 .hero-text h1 {
-    font-size: 3.5rem;
-    line-height: 1.1;
+    font-size: 3rem; /* Чуть меньше для мобильных */
+    line-height: 1.2;
     margin-bottom: 20px;
     background: var(--gold-gradient);
     -webkit-background-clip: text;
@@ -93,10 +104,13 @@ nav a:hover { color: var(--gold); }
 }
 
 .hero-text p {
-    color: #666;
+    color: #444; /* Чуть темнее текст для читаемости */
     line-height: 1.6;
     margin-bottom: 30px;
-    max-width: 600px;
+    font-weight: 500;
+    background: rgba(255,255,255,0.8); /* Подложка под текст */
+    padding: 10px;
+    border-radius: 5px;
 }
 
 .buttons { display: flex; gap: 20px; }
@@ -111,15 +125,18 @@ nav a:hover { color: var(--gold); }
     cursor: pointer;
     text-transform: uppercase;
     transition: transform 0.2s;
+    box-shadow: 0 4px 15px rgba(197, 157, 95, 0.3);
 }
 
 .btn:hover { transform: scale(1.05); }
 
 .hero-img {
     flex: 1;
+    min-width: 300px;
     display: flex;
     justify-content: center;
     position: relative;
+    margin-top: 30px;
 }
 
 .hero-img img {
@@ -127,28 +144,43 @@ nav a:hover { color: var(--gold); }
     height: auto;
     max-height: 600px;
     z-index: 2;
+    position: relative;
 }
 
-/* Эффект золотой рамки сзади */
+/* Рамка позади фото */
 .hero-img::before {
     content: '';
     position: absolute;
     width: 80%;
     height: 90%;
-    border: 2px solid var(--gold);
-    top: -20px;
-    right: 20px;
+    border: 3px solid var(--gold);
+    top: -15px;
+    right: 15px;
     z-index: 1;
 }
 
-/* --- SECTIONS GENERAL --- */
+/* --- АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ --- */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column-reverse; /* Фото сверху, текст снизу на мобилке */
+        padding: 30px 20px;
+        text-align: center;
+        background: rgba(255,255,255,0.9); /* Более плотный фон на мобилке */
+    }
+    .hero-text { padding-right: 0; }
+    .hero-text h1 { font-size: 2rem; margin-top: 20px;}
+    .buttons { justify-content: center; }
+    .hero-img::before { right: 10%; width: 80%; }
+}
+
+/* --- ОСТАЛЬНЫЕ СЕКЦИИ --- */
 .section-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 40px 50px 20px;
     border-top: 1px solid #eee;
-    background: rgba(255,255,255,0.8); /* Легкая прозрачность чтобы текст читался на узоре */
+    background: #fff; /* Белый фон разделителей */
 }
 
 .section-title {
@@ -159,29 +191,13 @@ nav a:hover { color: var(--gold); }
 
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Авто-сетка */
     gap: 30px;
     padding: 20px 50px 60px;
+    background: white; /* Контент на белом фоне */
 }
 
-/* --- PRODUCTS --- */
-.product-card {
-    text-align: center;
-    background: #fdfdfd;
-    padding: 20px;
-    border: 1px solid #eee;
-}
-
-.product-card img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    margin-bottom: 15px;
-}
-
-.product-card h4 { font-size: 0.9rem; color: #555; }
-
-/* --- BANNERS --- */
+/* --- BANNER --- */
 .full-banner {
     width: 100%;
     height: 400px;
@@ -190,8 +206,8 @@ nav a:hover { color: var(--gold); }
     margin-bottom: 50px;
     display: flex;
     align-items: center;
+    background: #eee;
 }
-
 .full-banner img.bg {
     position: absolute;
     width: 100%;
@@ -199,109 +215,52 @@ nav a:hover { color: var(--gold); }
     object-fit: cover;
     z-index: 0;
 }
-
 .banner-content {
     position: relative;
     z-index: 1;
     width: 50%;
-    padding-left: 50px; 
-    margin-left: auto; 
+    padding: 20px;
+    margin-left: auto;
     text-align: center;
+    background: rgba(255,255,255,0.7); /* Подложка чтобы текст читался */
+    backdrop-filter: blur(5px);
 }
-
-.banner-content h2 { font-size: 2.5rem; margin-bottom: 10px; }
+.banner-content h2 { font-size: 2rem; margin-bottom: 10px; color: var(--gold-dark); }
 .banner-content p { letter-spacing: 2px; margin-bottom: 20px; font-weight: bold;}
 
-/* Специфика для Oil Banner (темный) */
 .oil-banner .banner-content {
-    margin-left: 50px; /* Слева */
+    margin-left: 50px;
+    margin-right: auto; 
     text-align: left;
     color: white;
-    width: 40%;
+    background: rgba(0,0,0,0.6);
+    width: auto;
+    max-width: 500px;
 }
 .oil-banner h2 { color: var(--gold); }
 .oil-banner p { color: white; }
 
-/* --- NEWS --- */
-.news-card img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
+/* --- CARDS & FOOTER --- */
+.product-card, .news-card {
+    background: #fff;
+    border: 1px solid #eee;
+    padding: 15px;
 }
+.product-card img, .news-card img { width: 100%; object-fit: cover; }
+.news-card img { height: 300px; }
+.product-card img { height: 250px; }
 .news-label {
-    background: #222;
-    color: white;
-    padding: 5px 10px;
-    font-size: 0.8rem;
-    display: inline-block;
-    margin-top: -30px;
-    position: relative;
-    z-index: 2;
-    margin-left: 10px;
-    text-transform: uppercase;
+    background: #222; color: white; padding: 5px 10px;
+    font-size: 0.8rem; display: inline-block; margin-top: -30px;
+    position: relative; z-index: 2; margin-left: 10px;
 }
 
-/* --- FOOTER --- */
 footer {
     text-align: center;
     padding: 50px;
-    background: white;
+    background: #fff; /* Футер белый */
+    border-top: 1px solid var(--gold);
     position: relative;
-    border-top: 1px solid #eee;
 }
-.footer-logo { font-family: 'Cinzel'; font-size: 1.5rem; color: var(--gold); margin-bottom: 10px; display: block;}
+.footer-logo { font-family: 'Cinzel'; font-size: 1.5rem; color: var(--gold); display: block; margin-bottom: 10px;}
 .copyright { font-size: 0.8rem; color: #888; }
-.decor-splash {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 150px;
-    pointer-events: none;
-}
-
-/* --- TEAM PAGE SPECIFIC --- */
-.team-grid {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    padding: 50px;
-    flex-wrap: wrap;
-}
-
-.team-card {
-    width: 300px;
-    text-align: center;
-}
-
-.photo-frame {
-    position: relative;
-    margin-bottom: 20px;
-    padding: 10px;
-    border: 1px solid var(--gold);
-    background: white; /* Чтобы узор не просвечивал под фото */
-}
-
-/* Узор внутри рамки фото */
-.photo-frame::before {
-    content: '';
-    position: absolute;
-    top: 10px; left: 10px; right: 10px; bottom: 10px;
-    background: repeating-linear-gradient(45deg, #fff, #fff 2px, #f4e9d6 2px, #f4e9d6 4px);
-    z-index: 0;
-}
-
-.photo-frame img {
-    position: relative;
-    width: 100%;
-    z-index: 1;
-    display: block;
-    margin-top: -30px; 
-}
-
-.team-info h3 { font-size: 1rem; margin-bottom: 5px; color: var(--gold-dark); letter-spacing: 1px;}
-.team-info p { font-size: 0.8rem; font-weight: bold; color: #333; letter-spacing: 1px;}
-.team-title { text-align: center; font-size: 3rem; margin-top: 20px;}
-
-/* Декор брызги для Team */
-.splash-top-left { position: fixed; top: 0; left: 0; width: 150px; z-index: -1; }
-.splash-top-right { position: fixed; top: 0; right: 0; width: 200px; z-index: -1; }
