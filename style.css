@@ -21,15 +21,14 @@ body {
     color: var(--text-dark);
     overflow-x: hidden;
     
-    /* Светлый фон */
-    background-color: #ffffff;
+    /* Фон чуть темнее белого, чтобы выделить золото */
+    background-color: #fafafa; 
     
-    /* Рисуем золотую сетку без картинок */
+    /* Узор: более толстые линии и более яркий цвет (0.4 вместо 0.1) */
     background-image: 
-        repeating-linear-gradient(45deg, transparent, transparent 30px, rgba(197, 157, 95, 0.1) 30px, rgba(197, 157, 95, 0.1) 31px),
-        repeating-linear-gradient(-45deg, transparent, transparent 30px, rgba(197, 157, 95, 0.1) 30px, rgba(197, 157, 95, 0.1) 31px);
+        repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(197, 157, 95, 0.4) 40px, rgba(197, 157, 95, 0.4) 42px),
+        repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(197, 157, 95, 0.4) 40px, rgba(197, 157, 95, 0.4) 42px);
 }
-
 h1, h2, h3, h4 {
     font-family: 'Cinzel', serif;
     color: var(--gold);
