@@ -7,7 +7,7 @@ export const Hero = () => {
       
       <div className="container mx-auto px-6 md:px-12 relative z-10 text-center">
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-6 leading-tight tracking-wide">
-          GREGOR <span className="text-amber-500">INTERNAȚIONAL</span>
+          GREGOR <span className="text-amber-500">INTERNATIONAL</span>
           <br />
           <span className="text-2xl md:text-4xl lg:text-5xl font-sans font-light text-gray-300 block mt-4">
             Building Value Across Industries
