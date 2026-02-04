@@ -28,11 +28,11 @@ export const Header = () => {
       }`}
     >
       <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
-        <a href="#" className="flex items-center">
+        <a href="#" className="flex items-center mr-8">
   <img 
     src="/images/logo.png" 
     alt="Gregor International" 
-    className="h-10 md:h-12 w-auto"
+    className="h-14 md:h-16 w-auto object-contain"
   />
 </a>
 
