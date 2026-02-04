@@ -12,9 +12,14 @@ export const BusinessStructure = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* MON-EGO */}
           <div className="group relative overflow-hidden bg-black border border-white/10 hover:border-amber-500/50 transition-all duration-500 h-[500px] flex flex-col justify-end">
-             {/* Background Image Placeholder */}
-            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1618331835717-801e976710b2?q=80&w=1935&auto=format&fit=crop')] bg-cover bg-center opacity-40 group-hover:scale-105 transition-transform duration-700"></div>
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+             {/* Background Image */}
+            <img 
+              src="/images/mon-ego.jpg" 
+              alt="MON-EGO Premium Cosmetics"
+              className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-700"
+            />
+            {/* Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
             
             <div className="relative z-10 p-8 md:p-12">
               <div className="mb-4">
@@ -39,9 +44,14 @@ export const BusinessStructure = () => {
 
           {/* GREGOR INTERNATIONAL – ENERGY & OIL */}
           <div className="group relative overflow-hidden bg-black border border-white/10 hover:border-amber-500/50 transition-all duration-500 h-[500px] flex flex-col justify-end">
-            {/* Background Image Placeholder */}
-            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1518709386345-2184c2dd8391?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-40 group-hover:scale-105 transition-transform duration-700"></div>
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+            {/* Background Image */}
+            <img 
+              src="/images/oil.jpg" 
+              alt="Gregor International Energy"
+              className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-700"
+            />
+            {/* Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
 
             <div className="relative z-10 p-8 md:p-12">
               <div className="mb-4">
