@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const Owner = () => {
   return (
     <section id="owner" className="py-20 md:py-32 bg-zinc-950 text-white relative overflow-hidden">
@@ -15,14 +17,28 @@ export const Owner = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
-            {/* Placeholder for Owner Image - Abstract/Silhouette or Professional Portrait if available. Using a professional generic silhouette for now to maintain premium feel without false representation */}
-            <div className="relative aspect-[3/4] bg-gradient-to-br from-zinc-800 to-zinc-900 overflow-hidden shadow-2xl border border-white/5">
-                 <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=2071&auto=format&fit=crop')] bg-cover bg-center opacity-40 grayscale mix-blend-overlay"></div>
-                 <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black to-transparent">
-                     <p className="text-white font-serif text-lg tracking-widest">FOUNDER & OWNER</p>
+            
+            {/* Owner Image Container */}
+            <div className="group relative aspect-[3/4] bg-zinc-900 overflow-hidden shadow-2xl border border-white/5 rounded-sm">
+                 {/* Фото владельца */}
+                 <img 
+                    src="/images/grigore.jpg" 
+                    alt="Kunst Grigore" 
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                 />
+                 
+                 {/* Градиент снизу, чтобы надпись читалась */}
+                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+                 
+                 {/* Надпись внизу */}
+                 <div className="absolute bottom-0 left-0 right-0 p-8">
+                     <p className="text-white font-serif text-lg tracking-widest border-l-2 border-amber-500 pl-4">
+                        FOUNDER & OWNER
+                     </p>
                  </div>
             </div>
 
+            {/* Text Content */}
             <div className="space-y-8">
                 <div>
                     <h4 className="text-xl font-bold text-white mb-2 uppercase tracking-wide">Strategic Entrepreneur</h4>
