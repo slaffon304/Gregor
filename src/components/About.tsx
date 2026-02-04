@@ -3,22 +3,22 @@ import React from 'react';
 export const About = () => {
   const values = [
     {
-      image: "/images/about-1.jpg", // Убедись, что файл есть в папке public/images
+      image: "/images/about - 1.jpg", // Убедись, что файл есть в папке public/images
       title: "Reliability",
       description: "We build trust through consistent performance and unyielding integrity."
     },
     {
-      image: "/images/about-2.jpg",
+      image: "/images/about - 2.jpg",
       title: "Growth",
       description: "Focused on scalable assets with high marginality and long-term potential."
     },
     {
-      image: "/images/about-3.jpg",
+      image: "/images/about - 3.jpg",
       title: "Transparency",
       description: "Open communication with partners and investors is the bedrock of our success."
     },
     {
-      image: "/images/about-4.jpg",
+      image: "/images/about - 4.jpg",
       title: "Strategy",
       description: "Diversified portfolio management ensuring stability across market cycles."
     }
