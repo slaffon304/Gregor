@@ -16,7 +16,7 @@ export const BusinessStructure = () => {
             <img 
               src="/images/mon-ego.jpg" 
               alt="MON-EGO Premium Cosmetics"
-              className="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:scale-105 transition-transform duration-700"
+              className="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition-transform duration-700"
             />
             {/* Gradient Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
@@ -48,7 +48,7 @@ export const BusinessStructure = () => {
             <img 
               src="/images/oil.jpg" 
               alt="Gregor International Energy"
-              className="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:scale-105 transition-transform duration-700"
+              className="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition-transform duration-700"
             />
             {/* Gradient Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
