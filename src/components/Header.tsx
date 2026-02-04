@@ -28,9 +28,13 @@ export const Header = () => {
       }`}
     >
       <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
-        <a href="#" className="text-2xl md:text-3xl font-serif font-bold text-white tracking-widest">
-          GREGOR <span className="text-amber-500">INTERNAȚIONAL</span>
-        </a>
+        <a href="#" className="flex items-center">
+  <img 
+    src="/images/logo.png" 
+    alt="Gregor International" 
+    className="h-10 md:h-12 w-auto"
+  />
+</a>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center space-x-8">
