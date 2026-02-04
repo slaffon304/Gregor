@@ -11,13 +11,13 @@ export const Team = () => {
     {
       name: "Garanovschi Alina", // Имя 2
       role: "Head of Legal", // Должность
-      image: "/images/team_2.jpg",
+      image: "/images/team_3.jpg",
       bio: "Specializes in mergers and acquisitions, ensuring total compliance and legal security for all holding assets."
     },
     {
       name: "Name", // Имя 3
       role: "Operations Director", // Должность
-      image: "/images/team_3.jpg",
+      image: "/images/team_2.jpg",
       bio: "Oversees the operational efficiency of the energy division, implementing scalable processes for sustainable growth."
     }
   ];
