@@ -4,6 +4,7 @@ import { About } from './components/About';
 import { BusinessStructure } from './components/BusinessStructure';
 import { WhyInvest } from './components/WhyInvest';
 import { Owner } from './components/Owner';
+import { Team } from './components/Team';
 import { Investors } from './components/Investors';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
@@ -18,6 +19,7 @@ function App() {
         <BusinessStructure />
         <WhyInvest />
         <Owner />
+        <Team />
         <Investors />
         <Contact />
       </main>
