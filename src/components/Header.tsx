@@ -27,12 +27,12 @@ export const Header = () => {
         isScrolled ? 'bg-black/90 backdrop-blur-md py-4' : 'bg-transparent py-6'
       }`}
     >
-      <div className="w-full px-4 md:px-6 flex items-center justify-between">
+      <div className="w-full px-2 md:px-4 flex items-center justify-between">
         <a href="#" className="mr-12 shrink-0">
   <img 
     src="/images/logo.png" 
     alt="Gregor International" 
-    className="h-26 w-auto object-contain"
+    className="h-30 w-auto object-contain"
   />
 </a>
 
