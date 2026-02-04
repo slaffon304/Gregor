@@ -3,121 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gregor International - Home</title>
+    <title>Gregor International</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <!-- Header -->
     <header>
-        <div class="logo">
-            <!-- Замените logo.png на ваш файл -->
-            <img src="https://placehold.co/50x50/gold/white?text=LOGO" alt="Logo">
+        <div class="container header-inner">
+            <div class="logo">
+                <h3 style="margin:0; font-size:1.5rem; letter-spacing:2px;">GREGOR</h3>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="#">Mon-Ego</a></li>
+                    <li><a href="#">Gig Company</a></li>
+                </ul>
+            </nav>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#">Contact</a></li>
-                <li><a href="team.html">Team</a></li>
-                <li><a href="#">Mon-Ego</a></li>
-                <li><a href="#">Gig Company</a></li>
-            </ul>
-        </nav>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-text">
-            <h1>GREGOR<br>INTERNATIONAL</h1>
-            <p>Is An International Holding Company Focused On The Management And Development Of Business Structures Across Multiple Industries. The Company Operates With A Long-Term Approach, Emphasizing Stability, Scalability, And Value Creation.</p>
-            <div class="buttons">
-                <button class="btn">Gig Company</button>
-                <button class="btn">Mon Ego</button>
+        <!-- Фон с лучами -->
+        <div class="hero-bg"></div>
+        
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>GREGOR<br>INTERNATIONAL</h1>
+                <p>Is An International Holding Company Focused On The Management And Development Of Business Structures Across Multiple Industries. The Company Operates With A Long-Term Approach, Emphasizing Stability, Scalability, And Value Creation.</p>
+                <div class="buttons">
+                    <button class="btn">Gig Company</button>
+                    <button class="btn">Mon Ego</button>
+                </div>
             </div>
-        </div>
-        <div class="hero-img">
-            <div class="name-tag" style="position:absolute; bottom:50px; right:-20px; font-size:10px; color:#c59d5f; text-align:right;">GRIGORE<br>KUNST</div>
-            <!-- Замените hero-man.png на фото директора -->
-            <img src="https://placehold.co/400x600/1e2a4a/FFF?text=CEO+Photo" alt="Grigore Kunst">
+            
+            <div class="hero-image-wrapper">
+                <div class="border-decor"></div>
+                <!-- СЮДА НУЖНО ФОТО ДИРЕКТОРА БЕЗ ФОНА (.png) -->
+                <!-- Я поставил временную картинку -->
+                <img src="https://placehold.co/400x600/png?text=Director+PNG" alt="Grigore Kunst">
+            </div>
         </div>
     </section>
 
-    <!-- Mon-Ego Header -->
-    <div class="section-header">
-        <div></div>
-        <div class="section-title">MON-EGO <span style="color:#ccc">|</span> COSMETICS</div>
+    <!-- Mon-Ego Section -->
+    <div class="container">
+        <div class="section-header">
+            <div></div>
+            <div class="section-title">MON-EGO <span style="color:#ddd">|</span> COSMETICS</div>
+        </div>
+
+        <div class="products-grid">
+            <div class="product-card">
+                <img src="https://placehold.co/300x300/f5f5f5/999?text=Cream" alt="Product">
+                <h4 style="color:#666; font-size:0.8rem; margin-top:10px;">Collection - L'APPRÉCIÉE</h4>
+            </div>
+            <div class="product-card">
+                <img src="https://placehold.co/300x300/f5f5f5/999?text=Tubes" alt="Product">
+                <h4 style="color:#666; font-size:0.8rem; margin-top:10px;">Collection - Colléar</h4>
+            </div>
+            <div class="product-card">
+                <img src="https://placehold.co/300x300/f5f5f5/999?text=Bottles" alt="Product">
+                <h4 style="color:#666; font-size:0.8rem; margin-top:10px;">Collection - Lucéa</h4>
+            </div>
+        </div>
     </div>
 
-    <!-- Products Grid -->
-    <div class="grid-container">
-        <div class="product-card">
-            <img src="https://placehold.co/300x250/eee/999?text=Product+1" alt="Cosmetics">
-            <h4>Collection - L'APPRÉCIÉE</h4>
-        </div>
-        <div class="product-card">
-            <img src="https://placehold.co/300x250/eee/999?text=Product+2" alt="Cosmetics">
-            <h4>Collection - Colléar</h4>
-        </div>
-        <div class="product-card">
-            <img src="https://placehold.co/300x250/eee/999?text=Product+3" alt="Cosmetics">
-            <h4>Collection - Lucéa</h4>
-        </div>
-    </div>
-
-    <!-- Discover Banner (Mon Ego) -->
-    <div class="section-header">
-        <div class="section-title">DISCOVER <span style="font-size:12px; color:#999; margin-left:10px;">ALL PRODUCTS</span></div>
-    </div>
-    
-    <div class="full-banner">
-        <!-- Фон девушки с косметикой -->
-        <img src="https://placehold.co/1200x400/dcc/999?text=Woman+Banner" class="bg" alt="Banner">
+    <!-- Banner 1 -->
+    <div class="banner">
+        <!-- ФОН БАННЕРА (Девушка) -->
+        <img src="https://placehold.co/1200x400/e0d0b8/fff?text=Woman+Background" class="bg" alt="">
         <div class="banner-content">
-            <h2>MON - EGO</h2>
-            <p>ELEGANCE WITHOUT COMPROMISE</p>
+            <h2 style="font-size:2rem; margin-bottom:10px;">MON - EGO</h2>
+            <p style="font-weight:600; letter-spacing:2px; margin-bottom:20px;">ELEGANCE WITHOUT COMPROMISE</p>
             <button class="btn">Official Page</button>
         </div>
     </div>
 
-    <!-- Gig Company Banner -->
-    <div class="section-header">
-        <div></div>
-        <div class="section-title">GIG COMPANY <span style="color:#ccc">|</span> SERVICES</div>
+    <!-- Banner 2 (Oil) -->
+    <div class="container">
+        <div class="section-header">
+            <div></div>
+            <div class="section-title">GIG COMPANY <span style="color:#ddd">|</span> SERVICES</div>
+        </div>
     </div>
 
-    <div class="full-banner oil-banner">
-        <!-- Фон с нефтяными вышками -->
-        <img src="https://placehold.co/1200x400/220000/gold?text=Oil+Pumps+Silhouette" class="bg" alt="Oil Industry">
+    <div class="banner oil">
+        <!-- ФОН БАННЕРА (Нефть) -->
+        <img src="https://placehold.co/1200x400/3e2723/gold?text=Oil+Industry" class="bg" alt="">
         <div class="banner-content">
-            <h2>GIG COMPANY</h2>
-            <p>PROVIDES FULL-CYCLE SERVICES FOR OIL INFRASTRUCTURE</p>
-            <button class="btn" style="background:#c59d5f; color:#000;">Official Page</button>
-        </div>
-    </div>
-
-    <!-- News Section -->
-    <h2 style="text-align:center; font-size:3rem; margin: 40px 0;">NEWS</h2>
-    <div class="grid-container">
-        <div class="news-card">
-            <img src="https://placehold.co/300x400/333/fff?text=Formula" alt="News 1">
-            <div class="news-label">FORMULA</div>
-        </div>
-        <div class="news-card">
-            <img src="https://placehold.co/300x400/444/fff?text=Interview" alt="News 2">
-            <div class="news-label">INTERVIEW</div>
-        </div>
-        <div class="news-card">
-            <img src="https://placehold.co/300x400/555/fff?text=Biography" alt="News 3">
-            <div class="news-label">BIOGRAPHY</div>
+            <h2 style="font-size:2rem; margin-bottom:10px;">GIG COMPANY</h2>
+            <p style="font-weight:600; letter-spacing:2px; margin-bottom:20px;">PROVIDES FULL-CYCLE SERVICES</p>
+            <button class="btn">Official Page</button>
         </div>
     </div>
 
     <!-- Footer -->
     <footer>
-        <span class="footer-logo">GREGOR INTERNATIONAL</span>
-        <div class="copyright">© COPYRIGHT 2026 ALL RIGHTS RESERVED</div>
-        <!-- Золотые брызги внизу -->
-        <img src="https://placehold.co/100x100/gold/white?text=splash" class="decor-splash" alt="">
+        <div class="container">
+            <h3 style="margin-bottom:10px;">GREGOR INTERNATIONAL</h3>
+            <p style="font-size:0.8rem; color:#999;">© COPYRIGHT 2026 ALL RIGHTS RESERVED</p>
+        </div>
     </footer>
 
 </body>
-      </html>
+</html>
