@@ -1,29 +1,27 @@
 import { useState } from 'react';
+import { ChevronDown } from 'lucide-react'; // Добавил импорт иконки
 
 export const Investors = () => {
   const [countryCode, setCountryCode] = useState('+373');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [isPhoneValid, setIsPhoneValid] = useState(true);
 
-  // Обработка ввода кода страны (разрешаем +, цифры, макс 5 знаков)
+  // Обработка ввода кода страны
   const handleCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let val = e.target.value;
-    // Если пользователь стер плюс, вернем его
     if (!val.startsWith('+')) {
         val = '+' + val.replace(/[^0-9]/g, '');
     }
-    // Ограничим длину (код страны редко длиннее 4-5 знаков)
     if (val.length <= 5) {
         setCountryCode(val);
     }
   };
 
-  // Обработка ввода номера (только цифры)
+  // Обработка ввода номера
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value;
     if (val === '' || /^\d+$/.test(val)) {
       setPhoneNumber(val);
-      // Валидация: длина от 6 до 15 цифр
       setIsPhoneValid(val.length >= 6 && val.length <= 15);
     }
   };
@@ -35,7 +33,6 @@ export const Investors = () => {
       alert("Please enter a valid phone number.");
       return;
     }
-    // Логика отправки
     console.log(`Sending data: ${countryCode}${phoneNumber}`);
     alert("Request sent successfully!");
   };
@@ -86,11 +83,10 @@ export const Investors = () => {
                     <input type="text" id="name" required className="w-full bg-white border border-zinc-300 p-4 text-zinc-900 focus:outline-none focus:border-amber-500 transition-colors" placeholder="Full Name" />
                 </div>
 
-                {/* Телефон (Универсальный) */}
+                {/* Телефон */}
                 <div>
                     <label htmlFor="phone" className="block text-sm font-bold text-zinc-700 uppercase tracking-wide mb-2">Phone number</label>
                     <div className="flex">
-                        {/* Поле кода страны (Редактируемое) */}
                         <input 
                             type="text"
                             value={countryCode}
@@ -98,8 +94,6 @@ export const Investors = () => {
                             className="bg-zinc-200 border border-zinc-300 border-r-0 p-4 text-zinc-900 font-bold focus:outline-none focus:border-amber-500 w-[80px] text-center"
                             placeholder="+XX"
                         />
-                        
-                        {/* Поле номера */}
                         <input 
                             type="tel" 
                             id="phone" 
@@ -110,7 +104,6 @@ export const Investors = () => {
                             placeholder="79000000" 
                         />
                     </div>
-                    {/* Подсказка об ошибке */}
                     {!isPhoneValid && phoneNumber.length > 0 && (
                         <p className="text-red-500 text-xs mt-1">Please enter a valid phone number (digits only).</p>
                     )}
@@ -122,15 +115,22 @@ export const Investors = () => {
                     <input type="email" id="email" required className="w-full bg-white border border-zinc-300 p-4 text-zinc-900 focus:outline-none focus:border-amber-500 transition-colors" placeholder="email@company.com" />
                 </div>
 
-                {/* Интерес */}
+                {/* Интерес (ИСПРАВЛЕНО) */}
                 <div>
                     <label htmlFor="interest" className="block text-sm font-bold text-zinc-700 uppercase tracking-wide mb-2">Area of Interest</label>
-                    <select id="interest" className="w-full bg-white border border-zinc-300 p-4 text-zinc-900 focus:outline-none focus:border-amber-500 transition-colors cursor-pointer appearance-none">
-                        <option>General Investment</option>
-                        <option>Cosmetics (MON-EGO)</option>
-                        <option>Energy & Oil</option>
-                        <option>Partnership</option>
-                    </select>
+                    <div className="relative">
+                        <select 
+                            id="interest" 
+                            className="w-full bg-white border border-zinc-300 p-4 pr-10 text-zinc-900 focus:outline-none focus:border-amber-500 transition-colors cursor-pointer appearance-none"
+                        >
+                            <option>General Investment</option>
+                            <option>Cosmetics (MON-EGO)</option>
+                            <option>Energy & Oil</option>
+                            <option>Partnership</option>
+                        </select>
+                        {/* Иконка стрелочки поверх селекта */}
+                        <ChevronDown className="absolute right-4 top-1/2 transform -translate-y-1/2 text-zinc-500 w-5 h-5 pointer-events-none" />
+                    </div>
                 </div>
 
                 {/* Сообщение */}
@@ -144,7 +144,6 @@ export const Investors = () => {
                     ></textarea>
                 </div>
 
-                {/* Кнопка */}
                 <button type="submit" className="w-full bg-zinc-900 text-white font-bold uppercase tracking-widest py-4 hover:bg-zinc-800 transition-colors">
                     Contact Relations
                 </button>
