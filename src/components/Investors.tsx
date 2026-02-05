@@ -2,10 +2,9 @@ import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 
 export const Investors = () => {
-  // --- НАСТРОЙКИ ---
-  // Твоя НОВАЯ ссылка на Google Script
+  // --- ТВОЯ НОВАЯ ССЫЛКА ---
   const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwETHpI8mktoViXlLPONwEUVBWjeNI9erPh996SVIG4LgNBWJ_62YkH3b6xuiBdJEXO/exec";
-  // -----------------
+  // -----------------------
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -22,9 +21,7 @@ export const Investors = () => {
     if (!val.startsWith('+')) {
         val = '+' + val.replace(/[^0-9]/g, '');
     }
-    if (val.length <= 5) {
-        setCountryCode(val);
-    }
+    if (val.length <= 5) setCountryCode(val);
   };
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -46,37 +43,37 @@ export const Investors = () => {
     setIsSubmitting(true);
     const fullPhone = `${countryCode} ${phoneNumber}`;
 
-    // Формируем данные
     const formData = new FormData();
     formData.append("Name", name);
     formData.append("Email", email);
     formData.append("Phone", fullPhone);
     formData.append("Interest", interest);
     formData.append("Message", message);
-    
-    // Добавляем дату (чтобы в таблице точно была, даже если скрипт не сгенерит)
-    formData.append("Date", new Date().toString());
+    // Добавляем дату отправки
+    formData.append("Date", new Date().toLocaleString());
 
     try {
-      // Отправляем в Google Script (он и сохранит, и письмо отправит)
       await fetch(GOOGLE_SCRIPT_URL, {
         method: "POST",
         body: formData,
-        mode: 'no-cors' // Обязательный параметр для Google Scripts
+        mode: 'no-cors'
       });
 
-      alert("Thank you! Your request has been sent successfully.");
-      
-      // Очистка формы
+      // 1. Сначала ОЧИЩАЕМ ПОЛЯ
       setName('');
       setEmail('');
       setPhoneNumber('');
       setMessage('');
       setInterest('General Investment');
+      
+      // 2. Показываем сообщение с небольшой задержкой, чтобы React успел обновить экран
+      setTimeout(() => {
+          alert("Request sent successfully! We will contact you soon.");
+      }, 100);
 
     } catch (error) {
-      console.error("Submission Error:", error);
-      alert("Something went wrong. Please check your internet connection.");
+      console.error("Error:", error);
+      alert("Something went wrong. Please check your connection.");
     } finally {
       setIsSubmitting(false);
     }
