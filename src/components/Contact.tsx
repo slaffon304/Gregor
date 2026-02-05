@@ -8,31 +8,41 @@ export const Contact = () => {
         <h3 className="text-3xl md:text-5xl font-serif font-bold mb-12">Global Headquarters</h3>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          <div className="flex flex-col items-center p-8 border border-white/5 hover:bg-white/5 transition-colors">
-            <Mail className="w-10 h-10 text-amber-500 mb-6" />
+          
+          {/* Email Block */}
+          <div className="flex flex-col items-center p-8 border border-white/5 hover:bg-white/5 transition-colors group">
+            <Mail className="w-10 h-10 text-amber-500 mb-6 group-hover:scale-110 transition-transform" />
             <h4 className="text-lg font-bold uppercase tracking-widest mb-2">Email</h4>
-            <a href="mailto:contact@gregor.international" className="text-gray-400 hover:text-white transition-colors">
-              contact@gregor.international
+            <a 
+              href="mailto:info@mon-ego.com" 
+              className="text-gray-400 hover:text-amber-500 transition-colors"
+            >
+              info@mon-ego.com
             </a>
           </div>
 
-          <div className="flex flex-col items-center p-8 border border-white/5 hover:bg-white/5 transition-colors">
-            <MapPin className="w-10 h-10 text-amber-500 mb-6" />
+          {/* Location Block */}
+          <div className="flex flex-col items-center p-8 border border-white/5 hover:bg-white/5 transition-colors group">
+            <MapPin className="w-10 h-10 text-amber-500 mb-6 group-hover:scale-110 transition-transform" />
             <h4 className="text-lg font-bold uppercase tracking-widest mb-2">Location</h4>
-            <p className="text-gray-400">
+            <p className="text-gray-400 leading-relaxed">
               International Operations<br />
               London • Dubai • Bucharest
             </p>
           </div>
 
-          <div className="flex flex-col items-center p-8 border border-white/5 hover:bg-white/5 transition-colors">
-            <Phone className="w-10 h-10 text-amber-500 mb-6" />
-            <h4 className="text-lg font-bold uppercase tracking-widest mb-2">Inquiries</h4>
-            <p className="text-gray-400">
-              For corporate inquiries, please<br />
-              use our official channels.
-            </p>
+          {/* Phone Block (NEW) */}
+          <div className="flex flex-col items-center p-8 border border-white/5 hover:bg-white/5 transition-colors group">
+            <Phone className="w-10 h-10 text-amber-500 mb-6 group-hover:scale-110 transition-transform" />
+            <h4 className="text-lg font-bold uppercase tracking-widest mb-2">Phone</h4>
+            <a 
+              href="tel:+37368544704" 
+              className="text-gray-400 hover:text-amber-500 transition-colors font-serif text-lg"
+            >
+              +373 68 544 704
+            </a>
           </div>
+
         </div>
       </div>
     </section>
