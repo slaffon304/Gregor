@@ -1,12 +1,22 @@
 import { useState } from 'react';
-import { ChevronDown } from 'lucide-react'; // Добавил импорт иконки
+import { ChevronDown } from 'lucide-react';
 
 export const Investors = () => {
+  // --- НАСТРОЙКИ ---
+  // Твоя НОВАЯ ссылка на Google Script
+  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwETHpI8mktoViXlLPONwEUVBWjeNI9erPh996SVIG4LgNBWJ_62YkH3b6xuiBdJEXO/exec";
+  // -----------------
+
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [interest, setInterest] = useState('General Investment');
+  const [message, setMessage] = useState('');
+  
   const [countryCode, setCountryCode] = useState('+373');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [isPhoneValid, setIsPhoneValid] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Обработка ввода кода страны
   const handleCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let val = e.target.value;
     if (!val.startsWith('+')) {
@@ -17,7 +27,6 @@ export const Investors = () => {
     }
   };
 
-  // Обработка ввода номера
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value;
     if (val === '' || /^\d+$/.test(val)) {
@@ -26,15 +35,51 @@ export const Investors = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!phoneNumber || !isPhoneValid || countryCode.length < 2) {
-      setIsPhoneValid(false);
-      alert("Please enter a valid phone number.");
+    
+    if (!phoneNumber || !isPhoneValid || countryCode.length < 2 || !name || !email) {
+      alert("Please fill in all required fields correctly.");
       return;
     }
-    console.log(`Sending data: ${countryCode}${phoneNumber}`);
-    alert("Request sent successfully!");
+
+    setIsSubmitting(true);
+    const fullPhone = `${countryCode} ${phoneNumber}`;
+
+    // Формируем данные
+    const formData = new FormData();
+    formData.append("Name", name);
+    formData.append("Email", email);
+    formData.append("Phone", fullPhone);
+    formData.append("Interest", interest);
+    formData.append("Message", message);
+    
+    // Добавляем дату (чтобы в таблице точно была, даже если скрипт не сгенерит)
+    formData.append("Date", new Date().toString());
+
+    try {
+      // Отправляем в Google Script (он и сохранит, и письмо отправит)
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        body: formData,
+        mode: 'no-cors' // Обязательный параметр для Google Scripts
+      });
+
+      alert("Thank you! Your request has been sent successfully.");
+      
+      // Очистка формы
+      setName('');
+      setEmail('');
+      setPhoneNumber('');
+      setMessage('');
+      setInterest('General Investment');
+
+    } catch (error) {
+      console.error("Submission Error:", error);
+      alert("Something went wrong. Please check your internet connection.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -80,7 +125,15 @@ export const Investors = () => {
                 {/* Имя */}
                 <div>
                     <label htmlFor="name" className="block text-sm font-bold text-zinc-700 uppercase tracking-wide mb-2">Name</label>
-                    <input type="text" id="name" required className="w-full bg-white border border-zinc-300 p-4 text-zinc-900 focus:outline-none focus:border-amber-500 transition-colors" placeholder="Full Name" />
+                    <input 
+                      type="text" 
+                      id="name" 
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      required 
+                      className="w-full bg-white border border-zinc-300 p-4 text-zinc-900 focus:outline-none focus:border-amber-500 transition-colors" 
+                      placeholder="Full Name" 
+                    />
                 </div>
 
                 {/* Телефон */}
@@ -112,15 +165,25 @@ export const Investors = () => {
                 {/* Email */}
                 <div>
                     <label htmlFor="email" className="block text-sm font-bold text-zinc-700 uppercase tracking-wide mb-2">Email</label>
-                    <input type="email" id="email" required className="w-full bg-white border border-zinc-300 p-4 text-zinc-900 focus:outline-none focus:border-amber-500 transition-colors" placeholder="email@company.com" />
+                    <input 
+                      type="email" 
+                      id="email" 
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required 
+                      className="w-full bg-white border border-zinc-300 p-4 text-zinc-900 focus:outline-none focus:border-amber-500 transition-colors" 
+                      placeholder="email@company.com" 
+                    />
                 </div>
 
-                {/* Интерес (ИСПРАВЛЕНО) */}
+                {/* Интерес */}
                 <div>
                     <label htmlFor="interest" className="block text-sm font-bold text-zinc-700 uppercase tracking-wide mb-2">Area of Interest</label>
                     <div className="relative">
                         <select 
                             id="interest" 
+                            value={interest}
+                            onChange={(e) => setInterest(e.target.value)}
                             className="w-full bg-white border border-zinc-300 p-4 pr-10 text-zinc-900 focus:outline-none focus:border-amber-500 transition-colors cursor-pointer appearance-none"
                         >
                             <option>General Investment</option>
@@ -128,7 +191,6 @@ export const Investors = () => {
                             <option>Energy & Oil</option>
                             <option>Partnership</option>
                         </select>
-                        {/* Иконка стрелочки поверх селекта */}
                         <ChevronDown className="absolute right-4 top-1/2 transform -translate-y-1/2 text-zinc-500 w-5 h-5 pointer-events-none" />
                     </div>
                 </div>
@@ -138,14 +200,20 @@ export const Investors = () => {
                     <label htmlFor="message" className="block text-sm font-bold text-zinc-700 uppercase tracking-wide mb-2">Message</label>
                     <textarea 
                         id="message" 
+                        value={message}
+                        onChange={(e) => setMessage(e.target.value)}
                         rows={4} 
                         className="w-full bg-white border border-zinc-300 p-4 text-zinc-900 focus:outline-none focus:border-amber-500 transition-colors resize-none" 
                         placeholder="Please describe your inquiry..."
                     ></textarea>
                 </div>
 
-                <button type="submit" className="w-full bg-zinc-900 text-white font-bold uppercase tracking-widest py-4 hover:bg-zinc-800 transition-colors">
-                    Contact Relations
+                <button 
+                  type="submit" 
+                  disabled={isSubmitting}
+                  className="w-full bg-zinc-900 text-white font-bold uppercase tracking-widest py-4 hover:bg-zinc-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                    {isSubmitting ? "Sending..." : "Contact Relations"}
                 </button>
             </form>
           </div>
