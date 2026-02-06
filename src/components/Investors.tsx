@@ -3,7 +3,7 @@ import { ChevronDown } from 'lucide-react';
 
 export const Investors = () => {
   // --- ТВОЯ НОВАЯ ССЫЛКА ---
-  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwETHpI8mktoViXlLPONwEUVBWjeNI9erPh996SVIG4LgNBWJ_62YkH3b6xuiBdJEXO/exec";
+  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby9LpKmC3i37sebv86vDI0WjYNuT1FyOjArL56UH2ChQjNSPW3Nh4gK4NFOiuaZwVpk/exec";
   // -----------------------
 
   const [name, setName] = useState('');
