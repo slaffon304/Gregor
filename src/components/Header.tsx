@@ -32,7 +32,7 @@ export const Header = () => {
   <img 
     src="/images/logo.svg" 
     alt="Gregor International" 
-    className="h-30 w-auto object-contain"
+    className="h-20 w-auto object-contain"
   />
 </a>
 
