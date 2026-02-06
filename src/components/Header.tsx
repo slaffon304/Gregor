@@ -30,7 +30,7 @@ export const Header = () => {
       <div className="w-full px-2 md:px-4 flex items-center justify-between">
         <a href="#" className="mr-12 shrink-0">
   <img 
-    src="/images/logo.png" 
+    src="/images/logo.svg" 
     alt="Gregor International" 
     className="h-30 w-auto object-contain"
   />
